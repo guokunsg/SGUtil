@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
+    defaultConfig {
+        applicationId "com.gk.sgutil"
+        minSdkVersion SDK_MIN
+        targetSdkVersion SDK_TARGET
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    sourceSets {
+        androidTest {
+            assets.srcDirs += "src/androidTest/assets"
+            java.srcDirs += "src/testShared/java"
+        }
+        test {
+            java.srcDirs += "src/testShared/java"
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file("signkey.jks")
+            storePassword "password"
+            keyAlias "sgutil"
+            keyPassword "password"
+        }
+        release {
+            storeFile file("signkey.jks")
+            storePassword "password"
+            keyAlias "sgutil"
+            keyPassword "password"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError true
+        lintConfig file('lint.xml')
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation LIB_KOTLIN
+    implementation LIB_APPCOMPAT
+    implementation LIB_CONSTRAINT_LAYOUT
+    implementation LIB_ARCH_LIFECYCLE_EXT
+    implementation LIB_ARCH_LIFECYCLE_COMMON
+    implementation LIB_RX
+    implementation LIB_RX_KOTLIN
+    implementation LIB_RETROFIT
+    implementation LIB_RETROFIT_GSON
+    implementation LIB_ROOM
+    implementation LIB_ANDROID_SUPPORT_DESIGN
+    implementation LIB_ANDROID_SUPPORT_SUPPORT
+    implementation LIB_ANDROID_RECYCLER_VIEW
+    implementation LIB_GOOGLE_MAP
+    implementation LIG_GOOGLE_LOCATION
+    implementation LIB_RX_PERMISSION
+    implementation LIB_DAGGER
+    implementation LIB_DAGGER_SUPPORT
+    implementation LIB_FRESCO
+    kapt LIB_ROOM_ANNOTATION
+    kapt LIB_DAGGER_ANNOTATION
+    kapt LIB_DAGGER_COMPILER
+    testImplementation LIB_JUNIT
+    testImplementation LIB_OKHTTP
+    testImplementation LIB_ROOM_TESTING
+    testImplementation LIB_MOCKITO
+    testImplementation LIB_MOCKITO_INLINE
+    testImplementation LIB_ARCH_LIFECYCLE_TESTING
+    androidTestImplementation LIB_ANDROID_TEST_RULES
+    androidTestImplementation LIB_ANDROID_TEST
+    androidTestImplementation LIB_ESPRESSO
+    androidTestImplementation LIB_MOCKITO
+    androidTestImplementation LIB_DAGGER
+    androidTestImplementation LIB_DAGGER_SUPPORT
+    kaptAndroidTest LIB_DAGGER_ANNOTATION
+    kaptAndroidTest LIB_DAGGER_COMPILER
+    //androidTestImplementation LIB_MOCKITO_INLINE
+    androidTestImplementation LIB_MOCKITO_ANDROID
+}

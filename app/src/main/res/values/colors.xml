@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0277BD</color>
+    <color name="colorPrimaryDark">#01579B</color>
+    <color name="colorAccent">#4dabf5</color>
+
+    <color name="text_dark_blue">#172d58</color>
+    <color name="text_dark_grey">#808080</color>
+    <color name="text_light_grey">#D3D3D3</color>
+
+    <color name="header_info_background">#DCDCDC</color>
+    <color name="background_light_grey">#DCDCDC</color>
+
+    <color name="bus_load_seat">#22AC38</color>
+    <color name="bus_load_stand">#F1CE00</color>
+    <color name="bus_load_limited">#E60012</color>
+
+    <color name="blue_button">#3BB9FF</color>
+    <color name="blue_button_pressed">#82CAFA</color>
+</resources>

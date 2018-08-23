@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="bus_load_bar_width">40dp</dimen>
+    <dimen name="bus_load_bar_height">4dp</dimen>
+
+    <dimen name="header_info_height">40dip</dimen>
+
+    <dimen name="toolbar_title_margin_start_with_icon">32dp</dimen>
+    <dimen name="toolbar_title_margin_start_no_icon">0dp</dimen>
+
+    <dimen name="shadow_height">4dp</dimen>
+    <dimen name="nav_header_height">240dip</dimen>
+</resources>

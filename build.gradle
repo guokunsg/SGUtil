@@ -1,0 +1,72 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.51'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    SDK_COMPILE = 28
+    SDK_MIN = 21
+    SDK_TARGET = 28
+
+    // Library dependencies
+    LIB_KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    LIB_APPCOMPAT = 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    LIB_CONSTRAINT_LAYOUT = 'com.android.support.constraint:constraint-layout:1.1.2'
+    LIB_ARCH_LIFECYCLE_EXT = "android.arch.lifecycle:extensions:1.1.1"
+    LIB_ARCH_LIFECYCLE_COMMON = "android.arch.lifecycle:common-java8:1.1.1"
+    LIB_ARCH_LIFECYCLE_TESTING = 'android.arch.core:core-testing:1.1.1'
+    LIB_ANDROID_SUPPORT_DESIGN = 'com.android.support:design:28.0.0-beta01'
+    LIB_ANDROID_SUPPORT_SUPPORT = 'com.android.support:support-v4:28.0.0-beta01'
+    LIB_ANDROID_RECYCLER_VIEW = 'com.android.support:recyclerview-v7:28.0.0-beta01'
+    LIB_RX = 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    LIB_RX_KOTLIN = 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    //LIB_RX = "io.reactivex.rxjava2:rxjava:2.1.9"
+    LIB_RETROFIT = 'com.squareup.retrofit2:retrofit:2.4.0'
+    LIB_RETROFIT_GSON = 'com.squareup.retrofit2:converter-gson:2.4.0'
+    LIB_OKHTTP = 'com.squareup.okhttp3:okhttp:3.11.0'
+    LIB_ROOM = "android.arch.persistence.room:runtime:1.1.1"
+    LIB_ROOM_ANNOTATION = "android.arch.persistence.room:compiler:1.1.1"
+    LIB_ROOM_TESTING = "android.arch.persistence.room:testing:1.1.1"
+    LIB_RX_PERMISSION = "com.github.tbruyelle:rxpermissions:0.10.2"
+    LIB_GOOGLE_MAP = 'com.google.android.gms:play-services-maps:15.0.1'
+    LIG_GOOGLE_LOCATION = 'com.google.android.gms:play-services-location:15.0.1'
+    LIB_DAGGER = "com.google.dagger:dagger-android:2.16"
+    LIB_DAGGER_SUPPORT = "com.google.dagger:dagger-android-support:2.16"
+    LIB_DAGGER_ANNOTATION = "com.google.dagger:dagger-android-processor:2.16"
+    LIB_DAGGER_COMPILER = "com.google.dagger:dagger-compiler:2.16"
+    LIB_FRESCO = 'com.facebook.fresco:fresco:1.10.0'
+
+    // Libraries for testing
+    LIB_JUNIT = 'junit:junit:4.12'
+    LIB_ANDROID_TEST = 'com.android.support.test:runner:1.0.2'
+    LIB_ANDROID_TEST_RULES = 'com.android.support.test:rules:1.0.2'
+    LIB_ESPRESSO = 'com.android.support.test.espresso:espresso-core:3.0.2'
+    LIB_MOCKITO = 'org.mockito:mockito-core:2.21.0'
+    LIB_MOCKITO_INLINE = 'org.mockito:mockito-inline:2.21.0'
+    LIB_MOCKITO_ANDROID = 'org.mockito:mockito-android:2.21.0'
+}

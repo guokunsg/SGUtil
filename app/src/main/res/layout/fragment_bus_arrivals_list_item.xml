@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dip"
+    android:layout_marginTop="8dip"
+    android:layout_marginBottom="8dip"
+    android:layout_marginStart="16dip"
+    android:layout_marginEnd="16dip"
+    android:baselineAligned="true"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/service_no"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:background="@drawable/blue_button"
+        android:textColor="@android:color/white"
+        style="@style/ListItemText.Medium" />
+
+    <include layout="@layout/fragment_bus_arrivals_list_item_next_bus"
+            android:id="@+id/next_bus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+    <include layout="@layout/fragment_bus_arrivals_list_item_next_bus"
+             android:id="@+id/next_bus2"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="2" />
+
+</LinearLayout>

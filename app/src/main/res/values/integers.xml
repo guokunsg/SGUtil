@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Refresh bus data after one week -->
+    <integer name="bus_data_expiry_time_ms">604800000</integer>
+    <!-- Animation time duration when clicked on switching bus direction -->
+    <integer name="anim_switch_bus_direction_duration">1000</integer>
+
+    <integer name="bus_stops_search_range">1500</integer>
+    <integer name="location_min_movement_to_update">50</integer>
+
+    <!-- Location update interval. May not exactly working -->
+    <integer name="location_update_interval">15000</integer>
+</resources>

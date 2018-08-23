@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SG Util</string>
+
+    <string name="bus_stop_details">%1$s %2$s (%3$d m)</string>
+    <string name="bus_stop_details_no_distance">%1$s %2$s</string>
+    <string name="bus_stop_details_unknown">Unknown</string>
+
+    <string name="error_require_location_permission">This app requires location permission in order to find bus stops nearby</string>
+    <string name="error_no_location">Cannot find current location</string>
+    <string name="error_network_error">Network error</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_location_service_error">Location service error</string>
+
+    <string name="bus_stops_nearby_title">Bus Stops Nearby</string>
+    <string name="bus_stops_tab_list">List</string>
+    <string name="bus_stops_tab_map">Map</string>
+
+    <string name="bus_arrival_service_no">Service</string>
+    <string name="bus_arrival_first_bus">Coming Bus</string>
+    <string name="bus_arrival_second_bus">Second Bus</string>
+
+    <string name="bus_arrive_in_minutes">min</string>
+    <string name="bus_arriving">Arr</string>
+    <string name="bus_not_available">NA</string>
+
+    <string name="bus_route_title">Bus service: %1$s</string>
+    <string name="bus_route_oper_time">Operation time: Weekday: %01$s - %02$s\nSAT: %03$s - %04$s SUN: %05$s - %06$s\nTraveled: %07$skm</string>
+    <string name="bus_route_buses">Buses on stop: %01$s</string>
+
+    <string name="bus_load_seat">Seats Available</string>
+    <string name="bus_load_stand">Standing Available</string>
+    <string name="bus_load_limited">Limited Standing</string>
+
+    <string name="empty_string">""</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="nav_menu_bus">Bus</string>
+    <string name="nav_menu_traffic_images">Traffic Images</string>
+
+    <string name="traffic_images">Traffic Images</string>
+</resources>
