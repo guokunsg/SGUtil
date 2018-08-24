@@ -48,7 +48,8 @@ interface BusStopDao {
     fun upsert(busStops: Array<BusStop>)
 
     /**
-     * Load all the bus stops data
+     * Load all the bus stops data.
+     * Need all the data to find the stops within a distance from the current location to the bus stop.
      */
     @Query("SELECT * FROM $TABLE_BUS_STOPS")
     fun loadAll(): Array<BusStop>

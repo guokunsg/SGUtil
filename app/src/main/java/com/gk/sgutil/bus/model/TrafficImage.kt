@@ -2,6 +2,9 @@ package com.gk.sgutil.bus.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Data class which represents LTA traffic images information
+ */
 class TrafficImage {
     class TrafficImages {
         @SerializedName("odata.metadata")
@@ -22,7 +25,4 @@ class TrafficImage {
 
     @SerializedName("ImageLink")
     var imageLink: String? = null
-
-    // Not in the response. To store the address name
-    var address: String? = null
 }

@@ -19,7 +19,7 @@ import io.reactivex.subjects.Subject
 /**
  * Class to get the current location.
  * This implementation uses Google play location service.
- * Not thread safe!!
+ * Not thread safe!! Must not use as singleton.
  */
 class LocationCollector private constructor(
         context: Context, client: FusedLocationProviderClient, apiClientBuilder: GoogleApiClient.Builder) {

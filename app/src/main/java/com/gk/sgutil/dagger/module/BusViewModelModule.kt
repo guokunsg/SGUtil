@@ -3,13 +3,10 @@ package com.gk.sgutil.dagger.module
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.gk.sgutil.bus.viewmodel.*
-import com.gk.sgutil.dagger.scope.ActivityScoped
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
-import javax.inject.Provider
 import kotlin.reflect.KClass
 
 @Target(AnnotationTarget.FUNCTION)
@@ -39,6 +36,9 @@ abstract class BusViewModelModule {
     @ViewModelKey(TrafficImagesViewModel::class)
     abstract fun bindTrafficImagesViewModel(viewModel: TrafficImagesViewModel): ViewModel
 
+    /**
+     * Dagger will build the map required by BusViewModelFactory constructor
+     */
     @Binds
     abstract fun bindViewModelFactory(factory: BusViewModelFactory): ViewModelProvider.Factory
 }

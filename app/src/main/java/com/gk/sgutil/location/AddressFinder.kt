@@ -4,7 +4,6 @@ import android.content.Context
 import android.location.Address
 import android.location.Geocoder
 import android.support.v4.util.LruCache
-import android.text.TextUtils
 import com.gk.sgutil.util.Logger
 import com.google.android.gms.maps.model.LatLng
 import io.reactivex.Observable

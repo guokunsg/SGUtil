@@ -6,7 +6,7 @@ import com.gk.sgutil.R
 import javax.inject.Inject
 
 /**
- *
+ * Wraps SharedPreferences with default settings
  */
 class BusConfig @Inject constructor(context: Context) {
 

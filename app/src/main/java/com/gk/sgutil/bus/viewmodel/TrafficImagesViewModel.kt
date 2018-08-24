@@ -13,16 +13,25 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * The view model to download the real time traffic images from service provider
+ */
 class TrafficImagesViewModel @Inject constructor(app: Application) : BaseProgressViewModel(app) {
 
     private val mImages = MutableLiveData<Array<TrafficImage>>()
     @Inject
     lateinit var mBusDataService: BusDataService
 
+    /**
+     * Returns the traffic images live data for view to observe
+     */
     fun getTrafficImages(): LiveData<Array<TrafficImage>> {
         return mImages
     }
 
+    /**
+     * Start data fetching
+     */
     fun refreshImages() {
         if (mProgress.value != null && mProgress.value!!.status == ProgressStatus.Searching)
             return
@@ -41,5 +50,6 @@ class TrafficImagesViewModel @Inject constructor(app: Application) : BaseProgres
                     Logger.error("Error when getting data", it)
                     mProgress.value = SearchingProgress(ProgressStatus.Stopped, SGUtilException.translateError(it))
                 })
+        mProgress.value = SearchingProgress(ProgressStatus.Searching, null)
     }
 }

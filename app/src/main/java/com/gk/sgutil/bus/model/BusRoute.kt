@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName
  * 1. Data holder for a single bus route in JSON data,
  *    format is defined in LTA doc section 2.3 Bus routes
  * 2. Database entity class for ROOM
+ * May not be a good design to combine external and internal data, just for test trial
  */
 @Entity(tableName = TABLE_BUS_ROUTES,
         primaryKeys = arrayOf(

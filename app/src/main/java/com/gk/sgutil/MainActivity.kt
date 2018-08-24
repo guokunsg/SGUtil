@@ -48,14 +48,16 @@ class MainActivity : DaggerAppCompatActivity(), BusActionController, NavigationV
 
     // Check and enable/disable home up icon
     private fun shouldDisplayHomeUp(){
-        val showUp = supportFragmentManager.backStackEntryCount > 0
+        // Whether can go back to previous fragment
+        val backable = supportFragmentManager.backStackEntryCount > 0
         val bar = supportActionBar!!
         bar.setDisplayShowHomeEnabled(false)
         bar.setDisplayHomeAsUpEnabled(true)
         toolbar.titleMarginStart = resources.getDimension(R.dimen.toolbar_title_margin_start_no_icon).toInt()
-        bar.setHomeAsUpIndicator(if (showUp) null else getDrawable(R.mipmap.bus))
+        // Set null to use default back icon or use icon when at root fragment.
+        bar.setHomeAsUpIndicator(if (backable) null else getDrawable(R.mipmap.bus))
         drawer_layout.setDrawerLockMode(
-                if (showUp) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED)
+                if (backable) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -65,6 +67,7 @@ class MainActivity : DaggerAppCompatActivity(), BusActionController, NavigationV
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item!!.itemId == android.R.id.home) {
+            // Handle the click on the icon when at the root fragment
             if (supportFragmentManager.backStackEntryCount == 0) {
                 drawer_layout.openDrawer(GravityCompat.START)
                 return true
@@ -74,6 +77,7 @@ class MainActivity : DaggerAppCompatActivity(), BusActionController, NavigationV
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+        // Clear all the fragments in the back stack
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         val fragment : Fragment?
         if (menuItem.itemId == R.id.nav_menu_traffic_images) {

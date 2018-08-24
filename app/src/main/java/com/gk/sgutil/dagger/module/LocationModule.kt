@@ -3,7 +3,6 @@ package com.gk.sgutil.dagger.module
 import android.content.Context
 import com.gk.sgutil.location.AddressFinder
 import com.gk.sgutil.location.LocationCollector
-import com.gk.sgutil.util.Logger
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

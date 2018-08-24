@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName
  * 1. Data holder for a single bus stop in JSON data,
  *    format is defined in LTA doc section 2.4 Bus stops.
  * 2. Database entity class for ROOM
+ * May not be a good design to combine external and internal data, just for test trial
  */
 @Entity(tableName = TABLE_BUS_STOPS)
 class BusStop {
