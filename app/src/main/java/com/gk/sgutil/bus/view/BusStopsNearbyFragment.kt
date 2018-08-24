@@ -89,6 +89,11 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
         // Setup list view
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        // Add empty adapter so that swipe refresh can work
+        if (mModel.getBusStopsNearby().value == null) {
+            recycler_view.adapter = BusStopsNearbyAdapter(arrayOf(), mController)
+        }
+
         swipe_refresh.setOnRefreshListener {
             mMoveCamera = true
             grantPermssionAndStart()

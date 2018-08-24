@@ -3,7 +3,6 @@ package com.gk.sgutil.bus.view
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.GridLayoutManager
@@ -53,6 +52,10 @@ class TrafficImagesFragment: BaseFragment() {
             layoutManager = GridLayoutManager(context, 2)
             val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(dividerItemDecoration)
+            // Add empty adapter so that swipe refresh can work
+            if (mModel.getTrafficImages().value == null) {
+                adapter = TrafficImagesAdapter(activity!!, arrayOf(), mAddressFinder, mActionListener)
+            }
         }
     }
 

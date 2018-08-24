@@ -23,6 +23,7 @@ class TrafficImagesAdapter(
 
     // The map from the location geocode to address
     private val mAddressMap = ArrayMap<LatLng, String>()
+    private val mLayoutInflater = LayoutInflater.from(mContext)
 
     interface ActionListener {
         fun onImageClicked(image: TrafficImage)
@@ -45,8 +46,7 @@ class TrafficImagesAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.fragment_traffic_images_item, parent, false)
+        val view = mLayoutInflater.inflate(R.layout.fragment_traffic_images_item, parent, false)
         return ViewHolder(view)
     }
 

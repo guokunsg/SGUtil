@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -13,12 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.gk.sgutil.R
 import com.gk.sgutil.bus.model.BusStop
+import com.gk.sgutil.bus.viewmodel.BaseProgressViewModel.ProgressStatus
 import com.gk.sgutil.bus.viewmodel.BusActionController
 import com.gk.sgutil.bus.viewmodel.BusArrivals
 import com.gk.sgutil.bus.viewmodel.BusArrivalsViewModel
-import com.gk.sgutil.bus.viewmodel.BaseProgressViewModel.ProgressStatus
 import com.gk.sgutil.util.Logger
-import com.gk.sgutil.util.getErrorMessage
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.swipe_refresh_recyclerview.*
 
@@ -76,6 +74,10 @@ class BusArrivalsFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context)
             val dividerItemDecoration = DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL)
             addItemDecoration(dividerItemDecoration)
+            // Add empty adapter so that swipe refresh can work
+            if (mModel.getBusArrivals().value == null) {
+                adapter = BusArrivalsAdapter(context!!, arrayOf(), mController)
+            }
         }
         swipe_refresh.setOnRefreshListener {
             findBusArrivals()

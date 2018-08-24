@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.util.ArrayMap
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.gk.sgutil.R
 import com.gk.sgutil.bus.model.BusDataManager
+import com.gk.sgutil.bus.model.BusStop
 import com.gk.sgutil.bus.viewmodel.BusRoutesResult
 import com.gk.sgutil.bus.viewmodel.BusRoutesViewModel
 import com.gk.sgutil.bus.viewmodel.BaseProgressViewModel.ProgressStatus
@@ -89,6 +91,9 @@ class BusRoutesFragment : BaseFragment() {
             layoutAnimation = AnimationUtils.loadLayoutAnimation(context, R.anim.recyclerview_falldown)
             val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(dividerItemDecoration)
+            if (mModel.getBusRoutes().value == null) {
+                adapter = BusRoutesAdapter(context!!, arrayOf(), ArrayMap<String, BusStop>(), mBusDataManager)
+            }
         }
         swipe_refresh.setOnRefreshListener {
             findBusRoutes()

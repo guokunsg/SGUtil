@@ -8,7 +8,6 @@
     android:layout_height="0dip"
     android:layout_marginTop="@dimen/shadow_height"
     android:layout_weight="1">
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -18,5 +17,5 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="8dp"
         android:layoutAnimation="@anim/recyclerview_falldown"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 </android.support.v4.widget.SwipeRefreshLayout>
