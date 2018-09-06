@@ -48,6 +48,9 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
         private const val MAP_INIT_ZOOM = 10.5f
         // Show street
         private const val MAP_DEFAULT_ZOOM = 17.5f
+
+        private const val MOVE_CAMERA_ANIM_DURATION = 1000
+        private const val OLD_LOCATION_TIME = 180000
     }
 
     private lateinit var mModel: BusStopNearbyViewModel
@@ -63,6 +66,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
     // Whether should move the camera when there is a location change.
     // Camera moves when first and user refresh triggered location change
     private var mMoveCamera = true
+    private var mLastMapLocation : LatLng? = null
 
     private var mController: BusActionController? = null
 
@@ -126,6 +130,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
     override fun onStart() {
         super.onStart()
         mMoveCamera = true
+        mLastMapLocation = null
         grantPermssionAndStart()
     }
 
@@ -236,12 +241,19 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
             return
 
         val location = stops.location
+        val loc = LatLng(location.latitude, location.longitude)
         // Move camera for first time and user triggered actions
         if (mMoveCamera) {
-            val cameraPos = CameraPosition(LatLng(location.latitude, location.longitude), MAP_DEFAULT_ZOOM,
-                    map.cameraPosition.tilt, map.cameraPosition.bearing)
-            map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPos), 1000, null)
-            mMoveCamera = false
+            // The location might be an old location. Ignore the same location
+            if (mLastMapLocation == null || ! loc.equals(mLastMapLocation)) {
+                val cameraPos = CameraPosition(loc, MAP_DEFAULT_ZOOM,
+                        map.cameraPosition.tilt, map.cameraPosition.bearing)
+                map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPos), MOVE_CAMERA_ANIM_DURATION, null)
+                // Only consider camera moved for newer locations
+                if (System.currentTimeMillis() - location.time < OLD_LOCATION_TIME) {
+                    mMoveCamera = false
+                }
+            }
         }
         // Show blue my location on the map
         if (hasPermission(context!!, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)))
@@ -260,5 +272,6 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
             val busStopInfo = marker.tag as BusStopNearbyInfo
             mController!!.onViewBusArrivalsOnBusStop(busStopInfo.busStop)
         }
+        mLastMapLocation = loc
     }
 }
