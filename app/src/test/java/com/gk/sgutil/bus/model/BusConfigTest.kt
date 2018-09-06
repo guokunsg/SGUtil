@@ -69,4 +69,12 @@ class BusConfigTest {
         config.setBusRouteLastSyncTime(2)
         assertEquals(2, config.getBusRouteLastSyncTime())
     }
+
+    @Test
+    fun testBusStopsNearbyLastViewedTab() {
+        val config = BusConfig.getInstance(mockContext)
+        assertEquals(0, config.getBusStopsNearbyLastViewedTab())
+        config.setBusStopsNearbyLastViewedTab(1)
+        assertEquals(1, config.getBusStopsNearbyLastViewedTab())
+    }
 }

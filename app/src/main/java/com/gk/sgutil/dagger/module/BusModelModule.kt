@@ -37,5 +37,10 @@ abstract class BusModelModule() {
                     .build()
             return retrofit.create(BusDataService::class.java)
         }
+
+        @JvmStatic @Singleton @Provides
+        fun provideBusConfig(context: Context): BusConfig {
+            return BusConfig(context)
+        }
     }
 }

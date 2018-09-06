@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.gk.sgutil.R
 import com.gk.sgutil.SGUtilException
+import com.gk.sgutil.bus.model.BusConfig
 import com.gk.sgutil.bus.viewmodel.BusActionController
 import com.gk.sgutil.bus.viewmodel.BusStopNearbyInfo
 import com.gk.sgutil.bus.viewmodel.BusStopNearbyViewModel
@@ -35,6 +36,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_bus_stops.*
 import kotlinx.android.synthetic.main.swipe_refresh_recyclerview.*
+import javax.inject.Inject
 
 class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
 
@@ -69,6 +71,8 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
     private var mLastMapLocation : LatLng? = null
 
     private var mController: BusActionController? = null
+    @Inject
+    lateinit var mBusConfig: BusConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +114,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
             override fun onTabUnselected(p0: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 mTabIndex = tab!!.position
+                mBusConfig.setBusStopsNearbyLastViewedTab(mTabIndex)
                 Logger.debug("Tab selected: $mTabIndex")
                 swipe_refresh.visibility = if (tab.position == TAB_INDEX_LIST) View.VISIBLE else View.GONE
                 mMapView!!.visibility = if (tab.position == TAB_INDEX_MAP) View.VISIBLE else View.GONE
@@ -117,6 +122,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
                 updateUi(mModel.getBusStopsNearby().value)
             }
         })
+        mTabIndex = mBusConfig.getBusStopsNearbyLastViewedTab()
         tabs.getTabAt(mTabIndex)!!.select()
 
         // Update action bar title
