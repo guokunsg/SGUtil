@@ -44,9 +44,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
         private const val TAB_INDEX_LIST = 0
         private const val TAB_INDEX_MAP = 1
 
-        // Move the camera to Singapore when the map is ready
-        private val MAP_INIT_LOCATION = LatLng(1.327, 103.826)
-        // Show whole Singapore
+        // Default map initial zoom to show whole Singapore
         private const val MAP_INIT_ZOOM = 10.5f
         // Show street
         private const val MAP_DEFAULT_ZOOM = 17.5f
@@ -59,6 +57,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
 
     // GoogleMap will be set when the map is ready asynchronously.
     private var mMap: GoogleMap? = null
+    // The UI view of google map
     private var mMapView: View? = null
 
     // Save the selected tab index and restore the selection when new view is created
@@ -167,7 +166,7 @@ class BusStopsNearbyFragment : BaseFragment(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap?) {
         mMap = map
         if (mModel.getBusStopsNearby().value == null)
-            map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(MAP_INIT_LOCATION, MAP_INIT_ZOOM))
+            map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(BusConfig.MAP_INIT_LOCATION, MAP_INIT_ZOOM))
     }
 
     // Create ViewModel and observe on the data

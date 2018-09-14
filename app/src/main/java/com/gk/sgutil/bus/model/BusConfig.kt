@@ -3,6 +3,7 @@ package com.gk.sgutil.bus.model
 import android.content.Context
 import android.content.SharedPreferences
 import com.gk.sgutil.R
+import com.google.android.gms.maps.model.LatLng
 import javax.inject.Inject
 
 /**
@@ -11,16 +12,20 @@ import javax.inject.Inject
 class BusConfig @Inject constructor(context: Context) {
 
     companion object {
+        // Public constants
+        // Move the camera to Singapore when the map is ready
+        val MAP_INIT_LOCATION = LatLng(1.327, 103.826)
+
         // Runtime
-        const val LAST_BUS_STOPS_SYNC_TIME = "last_bus_stops_sync_time"
-        const val LAST_BUS_ROUTES_SYNC_TIME = "last_bus_routes_sync_time"
+        private const val LAST_BUS_STOPS_SYNC_TIME = "last_bus_stops_sync_time"
+        private const val LAST_BUS_ROUTES_SYNC_TIME = "last_bus_routes_sync_time"
 
         // Configurations which have default value from xml
-        const val BUS_DATA_EXPIRY_TIME = "bus_data_expiry_time"
-        const val BUS_STOP_SEARCH_RANGE = "bus_stops_search_range"
-        const val LOCATION_MIN_MOVE_TO_UPDATE = "location_min_move_to_update"
+        private const val BUS_DATA_EXPIRY_TIME = "bus_data_expiry_time"
+        private const val BUS_STOP_SEARCH_RANGE = "bus_stops_search_range"
+        private const val LOCATION_MIN_MOVE_TO_UPDATE = "location_min_move_to_update"
 
-        const val BUS_STOPS_NEARBY_LAST_VIEWED_TAB = "bus_stops_nearby_last_view_tab"
+        private const val BUS_STOPS_NEARBY_LAST_VIEWED_TAB = "bus_stops_nearby_last_view_tab"
 
         /** Returns a new instance of the configuration. Not singleton but data is consistent. */
         @JvmStatic

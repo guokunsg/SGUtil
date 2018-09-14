@@ -4,6 +4,7 @@
     <string name="bus_stop_details">%1$s %2$s (%3$d m)</string>
     <string name="bus_stop_details_no_distance">%1$s %2$s</string>
     <string name="bus_stop_details_unknown">Unknown</string>
+    <string name="bus_stop_details_na">NA</string>
 
     <string name="error_require_location_permission">This app requires location permission in order to find bus stops nearby</string>
     <string name="error_no_location">Cannot find current location</string>
