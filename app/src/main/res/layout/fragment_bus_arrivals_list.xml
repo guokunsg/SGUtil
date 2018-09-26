@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/merge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/fragment_bus_arrivals_list_header"/>
+    <include
+        android:id="@+id/header"
+        layout="@layout/fragment_bus_arrivals_list_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_info_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <include
+        android:id="@+id/bottom"
+        layout="@layout/fragment_bus_arrivals_list_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_refresh" />
+
+    <include
+        android:id="@+id/swipe_refresh"
         layout="@layout/swipe_refresh_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
 
-    <include layout="@layout/fragment_bus_arrivals_list_bottom"/>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

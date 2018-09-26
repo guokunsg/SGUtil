@@ -133,7 +133,7 @@ class BusRoutesFragment : BaseFragment(), OnMapReadyCallback {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 mTabIndex = tab!!.position
                 bus_routes_list.visibility = if (tab.position == TAB_INDEX_LIST) View.VISIBLE else View.GONE
-                mMapView!!.visibility = if (tab.position == TAB_INDEX_MAP) View.VISIBLE else View.GONE
+                bus_routes_map!!.visibility = if (tab.position == TAB_INDEX_MAP) View.VISIBLE else View.GONE
                 updateUi(mModel.getBusRoutes().value, mDirection)
             }
         })

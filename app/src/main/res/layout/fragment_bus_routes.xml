@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,45 +26,89 @@
     </android.support.design.widget.TabLayout>
 
     <include
+        android:id="@+id/bus_routes_list"
         layout="@layout/fragment_bus_routes_list"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabs"
+        app:layout_constraintBottom_toTopOf="@id/bottom"/>
 
-    <include
-        layout="@layout/fragment_map"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bus_routes_map"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:visibility="gone"/>
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabs"
+        app:layout_constraintBottom_toTopOf="@id/bottom"
+        android:visibility="gone">
+        <include
+            layout="@layout/fragment_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <LinearLayout
+        <TextView
+            android:id="@+id/txt_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bus_route_start_to_end"
+            android:textStyle="bold"
+            android:textColor="@color/route_marker_text"
+            android:background="@drawable/route_start_to_end_bg"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:background="@color/background_light_grey"
-        android:elevation="@dimen/shadow_height"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/txt_route_start"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:gravity="center" />
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <Button
             android:id="@+id/btn_change_direction"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/right_arrow"
             android:background="@drawable/green_right_arrow_button"
-            android:contentDescription="@string/empty_string"/>
+            android:contentDescription="@string/empty_string"
+            android:src="@mipmap/right_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/txt_route_start"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@id/btn_change_direction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/txt_route_end"
             android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:gravity="center"/>
-    </LinearLayout>
-</LinearLayout>
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_change_direction"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

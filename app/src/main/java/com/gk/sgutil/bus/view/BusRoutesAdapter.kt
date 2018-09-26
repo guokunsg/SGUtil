@@ -66,13 +66,13 @@ class BusRoutesAdapter(
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val sequence = mView.sequence!!
-        val stopName = mView.bus_stop!!
-        val details = mView.details!!
+        val sequence = mView.txt_sequence!!
+        val stopName = mView.txt_bus_stop!!
+        val details = mView.txt_details!!
 
         val extra = mView.extra_info!!
-        val oper_time = mView.oper_time!!
-        val buses = mView.buses!!
+        val oper_time = mView.txt_oper_time_info!!
+        val buses = mView.txt_buses_info!!
 
         // Update the information which are always displayed
         fun updateMainInfo(route: BusRoute) {
@@ -97,7 +97,7 @@ class BusRoutesAdapter(
             extra.visibility = if (isExpanded) View.VISIBLE else View.GONE
             if (isExpanded) {
                 // Setup extra information
-                oper_time.text = mContext.getString(R.string.bus_route_oper_time,
+                oper_time.text = mContext.getString(R.string.bus_route_oper_time_info,
                         route.wd_FirstBus, route.wd_LastBus, route.sat_FirstBus, route.sat_LastBus,
                         route.sun_FirstBus, route.sun_LastBus, route.distance.toString())
                 val buses = mBusServicesMap[route.busStopCode]
@@ -105,7 +105,7 @@ class BusRoutesAdapter(
                     val sb = StringBuilder()
                     for (bus in buses)
                         sb.append(bus).append(" ")
-                    this.buses.text = mContext.getString(R.string.bus_route_buses, sb.toString())
+                    this.buses.text = mContext.getString(R.string.bus_route_buses_info, sb.toString())
                     this.buses.visibility = View.VISIBLE
                 } else {
                     this.buses.visibility = View.GONE

@@ -1,39 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="50dip"
-    android:layout_marginTop="8dip"
-    android:layout_marginBottom="8dip"
     android:layout_marginStart="16dip"
     android:layout_marginEnd="16dip"
+    android:layout_marginTop="8dip"
+    android:layout_marginBottom="8dip"
     android:baselineAligned="true"
     android:orientation="horizontal">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6"/>
+
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/service_no"
+        style="@style/ListItemText.Medium"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="0dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:textAlignment="center"
-        android:gravity="center_vertical"
         android:background="@drawable/blue_button"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
-        style="@style/ListItemText.Medium" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-    <include layout="@layout/fragment_bus_arrivals_list_item_next_bus"
-            android:id="@+id/next_bus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2" />
+    <include
+        android:id="@+id/next_bus"
+        layout="@layout/fragment_bus_arrivals_list_item_next_bus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_60"
+        app:layout_constraintStart_toEndOf="@id/guideline_20" />
 
-    <include layout="@layout/fragment_bus_arrivals_list_item_next_bus"
-             android:id="@+id/next_bus2"
-             android:layout_width="0dp"
-             android:layout_height="match_parent"
-             android:layout_weight="2" />
+    <include
+        android:id="@+id/next_bus2"
+        layout="@layout/fragment_bus_arrivals_list_item_next_bus"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_60" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

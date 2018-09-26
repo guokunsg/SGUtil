@@ -1,32 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/header_info_height"
-    android:paddingStart="16dip"
-    android:paddingEnd="16dip"
-    android:background="@color/header_info_background"
+    android:background="@color/background_light_grey"
     android:elevation="@dimen/shadow_height"
-    android:orientation="horizontal">
+    android:paddingStart="16dip"
+    android:paddingEnd="16dip">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_60"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6"/>
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:id="@+id/txt_service_no"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/bus_arrival_service_no"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_20"/>
 
     <TextView
+        android:id="@+id/txt_first_bus"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/bus_arrival_first_bus"
-        android:gravity="center"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_20"
+        app:layout_constraintEnd_toStartOf="@id/guideline_60"/>
 
     <TextView
+        android:id="@+id/txt_second_bus"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:text="@string/bus_arrival_second_bus"
-        android:gravity="center"/>
-</LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline_60"
+        app:layout_constraintEnd_toEndOf="parent" />
+</android.support.constraint.ConstraintLayout>

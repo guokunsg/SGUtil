@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,15 +12,18 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        fresco:viewAspectRatio="1.33333"
-        fresco:placeholderImage="@color/background_light_grey"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        fresco:placeholderImage="@color/background_light_grey"
+        fresco:viewAspectRatio="1.33333"/>
     <TextView
         android:id="@+id/txt_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:gravity="center_horizontal"
-        android:maxLines="1"/>
-</RelativeLayout>
+        android:textAlignment="center"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+</android.support.constraint.ConstraintLayout>

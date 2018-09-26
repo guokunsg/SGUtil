@@ -72,7 +72,7 @@ class BusArrivalsFragment : BaseFragment() {
         // Initialize RecyclerView
         with(recycler_view) {
             layoutManager = LinearLayoutManager(context)
-            val dividerItemDecoration = DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL)
+            val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
             addItemDecoration(dividerItemDecoration)
             // Add empty adapter so that swipe refresh can work
             if (mModel.getBusArrivals().value == null) {

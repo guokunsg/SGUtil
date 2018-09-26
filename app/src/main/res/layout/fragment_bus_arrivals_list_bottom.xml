@@ -1,65 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/background_light_grey"
-    android:padding="8dp"
     android:baselineAligned="false"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_33"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/text_dark_grey"
-            android:text="@string/bus_load_seat"/>
-        <View
-            android:layout_width="@dimen/bus_load_bar_width"
-            android:layout_height="@dimen/bus_load_bar_height"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/bus_load_seat"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33333"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_67"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/text_dark_grey"
-            android:text="@string/bus_load_stand"/>
-        <View
-            android:layout_width="@dimen/bus_load_bar_width"
-            android:layout_height="@dimen/bus_load_bar_height"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/bus_load_stand"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="254dp"/>
+
+    <TextView
+        android:id="@+id/txt_seat"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="4dp"
-            android:textColor="@color/text_dark_grey"
-            android:text="@string/bus_load_limited"/>
-        <View
-            android:layout_width="@dimen/bus_load_bar_width"
-            android:layout_height="@dimen/bus_load_bar_height"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/bus_load_limited"/>
-    </LinearLayout>
-</LinearLayout>
+        android:text="@string/bus_load_seat"
+        android:textAlignment="center"
+        android:textColor="@color/text_dark_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_33"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <View
+        android:id="@+id/view_seat"
+        android:layout_width="@dimen/bus_load_bar_width"
+        android:layout_height="@dimen/bus_load_bar_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@color/bus_load_seat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_33"
+        app:layout_constraintTop_toBottomOf="@+id/txt_seat"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <TextView
+        android:id="@+id/txt_stand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/bus_load_stand"
+        android:textColor="@color/text_dark_grey"
+        app:layout_constraintStart_toStartOf="@+id/guideline_33"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_67"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <View
+        android:id="@+id/view_stand"
+        android:layout_width="@dimen/bus_load_bar_width"
+        android:layout_height="@dimen/bus_load_bar_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@color/bus_load_stand"
+        app:layout_constraintStart_toStartOf="@+id/guideline_33"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_67"
+        app:layout_constraintTop_toBottomOf="@+id/txt_stand"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <TextView
+        android:id="@+id/txt_limited"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/bus_load_limited"
+        android:textColor="@color/text_dark_grey"
+        app:layout_constraintStart_toStartOf="@+id/guideline_67"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <View
+        android:id="@+id/view_limited"
+        android:layout_width="@dimen/bus_load_bar_width"
+        android:layout_height="@dimen/bus_load_bar_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@color/bus_load_limited"
+        app:layout_constraintStart_toStartOf="@+id/guideline_67"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_limited"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+</android.support.constraint.ConstraintLayout>

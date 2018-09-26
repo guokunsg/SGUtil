@@ -25,8 +25,11 @@
     <string name="bus_not_available">NA</string>
 
     <string name="bus_route_title">Bus service: %1$s</string>
-    <string name="bus_route_oper_time">Operation time: Weekday: %01$s - %02$s\nSAT: %03$s - %04$s SUN: %05$s - %06$s\nTraveled: %07$skm</string>
-    <string name="bus_route_buses">Buses on stop: %01$s</string>
+    <string name="bus_route_oper_time">Operation time: </string>
+    <string name="bus_route_oper_time_info">Weekday: %01$s - %02$s\nSAT: %03$s - %04$s SUN: %05$s - %06$s\nTraveled: %07$skm</string>
+    <string name="bus_route_buses">Buses on stop: </string>
+    <string name="bus_route_buses_info">%01$s</string>
+    <string name="bus_route_start_to_end">Start -> End</string>
 
     <string name="bus_load_seat">Seats Available</string>
     <string name="bus_load_stand">Standing Available</string>

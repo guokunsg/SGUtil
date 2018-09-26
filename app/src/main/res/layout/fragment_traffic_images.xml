@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--include layout="@layout/fragment_bus_arrivals_list_header"/-->
-
     <include
         layout="@layout/swipe_refresh_recyclerview"
         android:layout_width="match_parent"
